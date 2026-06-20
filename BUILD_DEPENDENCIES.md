@@ -28,22 +28,12 @@ This document catalogs all build dependencies, secrets, and environment variable
 
 ---
 
-## CLI
-
-| Variable            | Purpose                                                                 | Referenced In                                                                                      |
-| ------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `CONTINUE_API_BASE` | Base URL for the Continue API (defaults to `https://api.continue.dev/`) | `extensions/cli/.env.example`                                                                      |
-| `CONTINUE_API_KEY`  | API key for Continue authentication                                     | `extensions/cli/.env.example`, `packages/continue-sdk/typescript/.env.example`, multiple workflows |
-
----
-
 ## NPM Package Releases
 
 | Secret                          | Purpose                                                     | Referenced In                                                                                                                 |
 | ------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `SEMANTIC_RELEASE_GITHUB_TOKEN` | GitHub token used by semantic-release for creating releases | `release-openai-adapters.yml`, `release-config-yaml.yml`, `release-fetch.yml`, `release-llm-info.yml`, `reusable-release.yml` |
 | `SEMANTIC_RELEASE_NPM_TOKEN`    | npm token used by semantic-release for publishing packages  | `release-openai-adapters.yml`, `release-config-yaml.yml`, `release-fetch.yml`, `release-llm-info.yml`, `reusable-release.yml` |
-| `SEMANTIC_RELEASE_TOKEN`        | GitHub token for stable release workflow                    | `stable-release.yml`                                                                                                          |
 
 ---
 
@@ -51,31 +41,29 @@ This document catalogs all build dependencies, secrets, and environment variable
 
 Used for integration tests in PR checks and package releases.
 
-| Secret                                | Purpose                                | Referenced In                                                                                         |
-| ------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `OPENAI_API_KEY`                      | OpenAI API key                         | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `ANTHROPIC_API_KEY`                   | Anthropic API key                      | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`, `cli-pr-checks.yml`, `continue-agents.yml` |
-| `GEMINI_API_KEY`                      | Google Gemini API key                  | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `MISTRAL_API_KEY`                     | Mistral API key                        | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `AZURE_OPENAI_API_KEY`                | Azure OpenAI API key                   | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `AZURE_FOUNDRY_CODESTRAL_API_KEY`     | Azure AI Foundry Codestral API key     | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `AZURE_FOUNDRY_MISTRAL_SMALL_API_KEY` | Azure AI Foundry Mistral Small API key | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `AZURE_OPENAI_GPT41_API_KEY`          | Azure OpenAI GPT-4.1 API key           | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `VOYAGE_API_KEY`                      | Voyage AI embeddings API key           | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `RELACE_API_KEY`                      | Relace API key                         | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
-| `INCEPTION_API_KEY`                   | Inception API key                      | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml`                                             |
+| Secret                                | Purpose                                | Referenced In                                             |
+| ------------------------------------- | -------------------------------------- | --------------------------------------------------------- |
+| `OPENAI_API_KEY`                      | OpenAI API key                         | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `ANTHROPIC_API_KEY`                   | Anthropic API key                      | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `GEMINI_API_KEY`                      | Google Gemini API key                  | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `MISTRAL_API_KEY`                     | Mistral API key                        | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `AZURE_OPENAI_API_KEY`                | Azure OpenAI API key                   | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `AZURE_FOUNDRY_CODESTRAL_API_KEY`     | Azure AI Foundry Codestral API key     | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `AZURE_FOUNDRY_MISTRAL_SMALL_API_KEY` | Azure AI Foundry Mistral Small API key | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `AZURE_OPENAI_GPT41_API_KEY`          | Azure OpenAI GPT-4.1 API key           | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `VOYAGE_API_KEY`                      | Voyage AI embeddings API key           | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `RELACE_API_KEY`                      | Relace API key                         | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
+| `INCEPTION_API_KEY`                   | Inception API key                      | `pr-checks.yaml`, `reusable-release.yml`, `release-*.yml` |
 
 ---
 
 ## CI/CD & GitHub
 
-| Secret             | Purpose                                                         | Referenced In                                                                                                         |
-| ------------------ | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `GITHUB_TOKEN`     | Default GitHub Actions token (automatic)                        | Many workflows                                                                                                        |
-| `CI_GITHUB_TOKEN`  | Elevated GitHub PAT for cross-repo operations and PR management | `jetbrains-release.yaml`, `preview.yaml`, `main.yaml`, `pr-checks.yaml`, `auto-assign-issue.yaml`                     |
-| `CONTINUE_API_KEY` | Continue platform API key for agent workflows                   | `run-continue-agent.yml`, `tidy-up-codebase.yml`, `snyk-agent.yaml`, `auto-fix-failed-tests.yml`, `cli-pr-checks.yml` |
-| `RUNLOOP_API_KEY`  | Runloop API key for uploading sandbox blueprints                | `stable-release.yml`, `upload-runloop-blueprint.yml`                                                                  |
-| `SNYK_TOKEN`       | Snyk security scanning token                                    | `snyk-agent.yaml`                                                                                                     |
+| Secret             | Purpose                                                         | Referenced In                                                                                     |
+| ------------------ | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `GITHUB_TOKEN`     | Default GitHub Actions token (automatic)                        | Many workflows                                                                                    |
+| `CI_GITHUB_TOKEN`  | Elevated GitHub PAT for cross-repo operations and PR management | `jetbrains-release.yaml`, `preview.yaml`, `main.yaml`, `pr-checks.yaml`, `auto-assign-issue.yaml` |
+| `CONTINUE_API_KEY` | Continue platform API key for agent workflows                   | `run-continue-agent.yml`, `tidy-up-codebase.yml`                                                  |
 
 ---
 
@@ -101,5 +89,4 @@ Used for integration tests in PR checks and package releases.
 
 All workflow files are located under `.github/workflows/`. Environment example files are at:
 
-- `extensions/cli/.env.example`
 - `packages/continue-sdk/typescript/.env.example`
